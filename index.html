@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Plato Saludable Interactivo</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+    <div class="container">
+        <h2>Mi Plato Saludable</h2>
+        
+        <div class="plate-wrapper">
+            <svg class="plate" viewBox="0 0 220 220" xmlns="http://www.w3.org/2000/svg">
+                <defs>
+                    <filter id="shadow" x="-10%" y="-10%" width="130%" height="130%">
+                        <feDropShadow dx="2" dy="8" stdDeviation="6" flood-opacity="0.25" />
+                    </filter>
+                    <filter id="inner-shadow">
+                        <feOffset dx="0" dy="2"/>
+                        <feGaussianBlur stdDeviation="3" result="offset-blur"/>
+                        <feComposite operator="out" in="SourceGraphic" in2="offset-blur" result="inverse"/>
+                        <feFlood flood-color="black" flood-opacity="0.1" result="color"/>
+                        <feComposite operator="in" in="color" in2="inverse" result="shadow"/>
+                        <feComposite operator="over" in="shadow" in2="SourceGraphic"/>
+                    </filter>
+
+                    <pattern id="veg-img" patternUnits="userSpaceOnUse" width="220" height="220">
+                        <image href="https://images.unsplash.com/photo-1512621776951-a57141f2eefd?crop=entropy&cs=tinysrgb&fit=crop&fm=jpg&h=400&w=400" x="0" y="0" width="220" height="220" />
+                    </pattern>
+                    <pattern id="protein-img" patternUnits="userSpaceOnUse" width="220" height="220">
+                        <image href="https://images.unsplash.com/photo-1580476262798-bddd9f4b7369?crop=entropy&cs=tinysrgb&fit=crop&fm=jpg&h=400&w=400" x="0" y="-30" width="220" height="220" />
+                    </pattern>
+                    <pattern id="carb-img" patternUnits="userSpaceOnUse" width="220" height="220">
+                        <image href="https://images.unsplash.com/photo-1604068549290-dea0e4a305ca?crop=entropy&cs=tinysrgb&fit=crop&fm=jpg&h=400&w=400" x="50" y="-50" width="220" height="220" />
+                    </pattern>
+                </defs>
+
+                <circle cx="110" cy="110" r="105" fill="#fafafa" filter="url(#shadow)" />
+                <circle cx="110" cy="110" r="95" fill="#ffffff" filter="url(#inner-shadow)" stroke="#eaeaea" stroke-width="2" />
+
+                <g class="section" tabindex="0" data-title="🥬 Vegetales (50%)" data-desc="Ensalada fresca de lechuga, tomate y zanahoria rallada. Aportan fibra, vitaminas y minerales esenciales sin exceso de calorías.">
+                    <path d="M 110,110 L 110,15 A 95 95 0 0 0 110 205 Z" fill="url(#veg-img)" stroke="#fff" stroke-width="4" stroke-linejoin="round"/>
+                </g>
+
+                <g class="section" tabindex="0" data-title="🐟 Proteína Magra (25%)" data-desc="Una porción de pescado asado. Fundamental para el mantenimiento y construcción de los tejidos musculares y del sistema inmune.">
+                    <path d="M 110,110 L 110,15 A 95 95 0 0 1 205 110 Z" fill="url(#protein-img)" stroke="#fff" stroke-width="4" stroke-linejoin="round"/>
+                </g>
+
+                <g class="section" tabindex="0" data-title="🥔 Carbohidratos Complejos (25%)" data-desc="Una porción de yuca cocida. Funcionan como el principal combustible del cuerpo, aportando energía de larga duración.">
+                    <path d="M 110,110 L 205,110 A 95 95 0 0 1 110 205 Z" fill="url(#carb-img)" stroke="#fff" stroke-width="4" stroke-linejoin="round"/>
+                </g>
+            </svg>
+
+            <div class="water-glass-container section" tabindex="0" data-title="💧 Hidratación" data-desc="Vaso de agua fresca. Vital para la digestión, absorción de nutrientes y el correcto funcionamiento de los órganos.">
+                <div class="glass">
+                    <div class="water">
+                        <div class="ice"></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="info-panel" id="info-panel">
+            <h3 id="info-title">🍽️ El Plato Ideal</h3>
+            <p id="info-desc">Haz clic sobre una porción para fijar la información, o pasa el cursor para explorarla.</p>
+        </div>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>
